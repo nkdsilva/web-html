@@ -19,6 +19,7 @@ pipeline {
             steps {
                 sh 'echo "Building..."'	
                 sh 'aws s3 cp index.html s3://$S3_BUCKET/index.html'
+                sh 'echo "End building..."'
             }
         }
 
