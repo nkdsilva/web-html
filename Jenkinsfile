@@ -17,7 +17,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'echo "Building..."'	
+                sh 'echo "Building..."'	//single sh
                 sh 'aws s3 cp index.html s3://$S3_BUCKET/index.html'
                 sh 'echo "End building..."'
             }
@@ -27,7 +27,7 @@ pipeline {
             steps {
                 sshagent(['apache-ssh-key']) {
                   sh 'scp index.html ubuntu@$APP_SERVER_IP /var/www/html/index.html'
-                  sh 'ssh ubuntu@$APP_SERVER_IP "sudo systemctl restart apache2"'
+                  sh 'ssh ubuntu@$APP_SERVER_IP "sudo systemctl restart apache2"' //reload
                 }
             }
         }
