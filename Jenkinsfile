@@ -26,7 +26,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 sshagent(['apache-ssh-key']) {
-                  sh 'scp index.html ubuntu@$APP_SERVER_IP /var/www/html/index.html'
+                  sh 'scp index.html ubuntu@$APP_SERVER_IP:/var/www/html/index.html'
                   sh 'ssh ubuntu@$APP_SERVER_IP "sudo systemctl restart apache2"' //reload
                 }
             }
