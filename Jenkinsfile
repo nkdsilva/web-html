@@ -28,7 +28,7 @@ pipeline {
                 sshagent(['apache-ssh-key']) {
                   //sh 'scp index.html ubuntu@$APP_SERVER_IP /var/www/html/index.html'
                   //sh 'ssh -o StrictHostKeyChecking=no ubuntu@$APP_SERVER_IP "sudo chown -R ubuntu:ubuntu /var/www/html"'
-                  sh 'scp index.html ubuntu@$APP_SERVER_IP /var/www/html/index.html'
+                  sh 'scp index.html ubuntu@$APP_SERVER_IP:/var/www/html/index.html'
                   sh 'ssh ubuntu@$APP_SERVER_IP "sudo systemctl reload apache2"' //reload
                 }
             }
