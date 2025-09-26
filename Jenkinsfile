@@ -27,7 +27,7 @@ pipeline {
             steps {
                 sshagent(['apache-ssh-key']) {
                   //sh 'scp index.html ubuntu@$APP_SERVER_IP /var/www/html/index.html'
-                  sh 'scp index.html ubuntu@15.134.33.63:/home/ubuntu/'
+                  sh 'scp index.html ubuntu@15.134.33.63 /home/ubuntu/'
                   sh 'ssh ubuntu@$APP_SERVER_IP "sudo mv /home/ubuntu/index.html /var/www/html/"'
                   sh 'ssh ubuntu@$APP_SERVER_IP "sudo systemctl reload apache2"' //reload
                 }
